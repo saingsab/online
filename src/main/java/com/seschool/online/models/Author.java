@@ -11,6 +11,7 @@ import java.time.LocalDateTime;
 @Data
 @NoArgsConstructor
 @Entity
+//@Table(name = "AUTHOR_TBL") only for custom table name
 public class Author {
     @Id
     @GeneratedValue
