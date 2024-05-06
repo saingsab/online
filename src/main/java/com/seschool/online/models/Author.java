@@ -1,15 +1,15 @@
 package com.seschool.online.models;
 
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
+//@AllArgsConstructor
+//@Builder
 @Entity
 //@Table(name = "AUTHOR_TBL") only for custom table name
 public class Author {
@@ -45,5 +45,8 @@ public class Author {
             insertable = false
     )
     private LocalDateTime lastModied;
+
+    @ManyToMany(mappedBy = "authors")
+    private List<Course> courses;
 
 }
