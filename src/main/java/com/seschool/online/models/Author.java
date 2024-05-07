@@ -2,20 +2,19 @@ package com.seschool.online.models;
 
 import jakarta.persistence.*;
 import lombok.*;
+import lombok.experimental.SuperBuilder;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
+@EqualsAndHashCode(callSuper = true)
 @Data
 @NoArgsConstructor
-//@AllArgsConstructor
-//@Builder
+@AllArgsConstructor
+@SuperBuilder
 @Entity
 //@Table(name = "AUTHOR_TBL") only for custom table name
-public class Author {
-    @Id
-    @GeneratedValue
-    private Integer id;
+public class Author extends BaseEntity {
 
     @Column(
             name = "f_name"
@@ -36,15 +35,8 @@ public class Author {
     private Integer age;
 
     @Column(
-            updatable = false,
-            nullable = false
-    )
-    private LocalDateTime createdAt;
-
-    @Column(
             insertable = false
     )
-    private LocalDateTime lastModied;
 
     @ManyToMany(mappedBy = "authors")
     private List<Course> courses;
