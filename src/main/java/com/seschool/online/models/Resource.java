@@ -3,14 +3,14 @@ package com.seschool.online.models;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
+import org.hibernate.Internal;
 
-@EqualsAndHashCode(callSuper = true)
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @SuperBuilder
-@Entity
-public class Resource extends BaseEntity {
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+public class Resource {
 
     private String name;
     private int size;
